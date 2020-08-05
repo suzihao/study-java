@@ -1,5 +1,7 @@
 package com.company.password;
 
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 import java.util.Random;
 
 public class NewPassword {
@@ -33,6 +35,7 @@ public static void main(String[] args) {
   pswd = new String(chs);
 //  System.out.println(pswd);
   System.out.println(generatePassword(10));
+
   }
 
   public static String generatePassword (int length) {
