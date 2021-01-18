@@ -11,6 +11,7 @@ public class SelectionSort {
         long start = System.currentTimeMillis();
 //        selectionSort(nums);
 //        BubbleSort.bubbleSort(nums);
+
         QuickSort.quickSort(nums,0,nums.length-1);
         long end = System.currentTimeMillis();
         for (int i = 0;i < nums.length;i++){
