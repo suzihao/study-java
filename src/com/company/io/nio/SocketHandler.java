@@ -39,6 +39,7 @@ public class SocketHandler implements Runnable{
                 socketChannel.write(writeBuffer);
 
                 buffer.clear();
+                socketChannel.close();
             }
         } catch (IOException e) {
 //            IOUtils.closeQuietly(socketChannel);
