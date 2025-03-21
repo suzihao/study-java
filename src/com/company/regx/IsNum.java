@@ -1,4 +1,4 @@
-package com.company.Regx;
+package com.company.regx;
 
 import java.util.regex.Pattern;
 
