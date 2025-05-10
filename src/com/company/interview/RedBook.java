@@ -66,6 +66,14 @@ public class RedBook {
 
         // 输出结果（若无法达到则返回-1）
         int result = Math.min(dp[m][0], dp[m][1]);
+
+        // 打印dp数组
+        for(int i =0;i< dp.length;i++){
+            for (int j=0;j<dp[0].length;j++){
+                System.out.print(dp[i][j] + " ");
+            }
+            System.out.println(); // 每行结束后换行
+        }
         System.out.println(result != INF ? result : -1);
     }
 
