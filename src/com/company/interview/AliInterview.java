@@ -82,10 +82,37 @@ public class AliInterview {
         String data;
     }
 
+//    private final JedisPool jedisPool;
+    private final String rateLimitKey = "global_rate_limit";
+    private final int maxQps = 1000;
+
 
     public boolean canEntry(Request request, Integer maxQps){
         //在线上分布式场景下，实现一套限流逻辑。
-//        redisClient.setNx(RedisKey);
+        // 如果传入的 maxQps 不为空，则覆盖默认值
+        int currentMaxQps = maxQps != null ? maxQps : this.maxQps;
+
+//        try (Jedis jedis = jedisPool.getResource()) {
+//            String luaScript =
+//                    "local key = KEYS[1]\n" +
+//                            "local limit = tonumber(ARGV[1])\n" +
+//                            "local current = redis.call('INCR', key)\n" +
+//                            "if current == 1 then\n" +
+//                            "    redis.call('EXPIRE', key, 1)\n" +
+//                            "end\n" +
+//                            "if current > limit then\n" +
+//                            "    return 0\n" +
+//                            "else\n" +
+//                            "    return 1\n" +
+//                            "end";
+//
+//            Object result = jedis.eval(luaScript, 1, rateLimitKey, String.valueOf(currentMaxQps));
+//            return (Integer) result == 1;
+//        } catch (Exception e) {
+//            // Redis 异常降级策略：默认允许请求
+//            System.err.println("Redis 限流异常，降级为不限流：" + e.getMessage());
+//            return true;
+//        }
         return true;
     }
 
