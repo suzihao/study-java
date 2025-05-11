@@ -54,6 +54,22 @@ public class WeightedGraph {
         return edges;
     }
 
+    // 深拷贝图
+    public static WeightedGraph deepCopy(WeightedGraph original) {
+        WeightedGraph copy = new WeightedGraph(original.getVertices());
+
+        for (int v = 0; v < original.getVertices(); v++) {
+            for (Edge e : original.adj(v)) {
+                // 防止重复添加边（无向图每条边添加两次）
+                if (v < e.to) {
+                    copy.addEdge(v, e.to, e.weight);
+                }
+            }
+        }
+
+        return copy;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -66,5 +82,15 @@ public class WeightedGraph {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        WeightedGraph original = new WeightedGraph(3);
+        original.addEdge(0, 1, 1.0);
+        original.addEdge(1, 2, 2.0);
+
+        WeightedGraph copy = deepCopy(original);
+        System.out.println("原图: " + original);
+        System.out.println("拷贝图: " + copy);
     }
 }

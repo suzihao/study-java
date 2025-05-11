@@ -39,6 +39,20 @@ public class Graph {
         edges++;
     }
 
+    // 深拷贝图
+    public static Graph deepCopy(Graph original) {
+        Graph copy = new Graph(original.getVertices());
+        for (int v = 0; v < original.getVertices(); v++) {
+            for (Integer w : original.adj(v)) {
+                if (v<w){
+                    copy.addEdge(v, w);
+                }
+            }
+        }
+
+        return copy;
+    }
+
     /**
      * 获取与顶点 v 相邻的所有顶点
      * @param v 顶点 v
@@ -98,5 +112,9 @@ public class Graph {
 
         // 打印邻接表
         System.out.println(graph);
+
+        Graph graphCopy = deepCopy(graph);
+
+        System.out.println(graphCopy);
     }
 }
