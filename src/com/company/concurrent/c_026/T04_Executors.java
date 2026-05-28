@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 public class T04_Executors {
 
     public static void main(String[] args) {
-        Executors executors = (Executors) Executors.newCachedThreadPool();
+//        Executors executors = (Executors) Executors.newCachedThreadPool();
         //...
     }
 
